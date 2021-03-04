@@ -5,7 +5,6 @@ module Data.JuicyCairo (cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32) where
 
 import Control.Arrow
 import Data.Maybe
-import Data.Word
 
 import qualified Data.CairoImage.Internal as C
 import qualified Codec.Picture as J
@@ -16,27 +15,13 @@ cairoToJuicy f i = (uncurry . J.generateImage)
 	(fromIntegral *** fromIntegral $ C.imageSize i)
 
 pixelArgb32ToPixelRGBA8 :: C.PixelArgb32 -> J.PixelRGBA8
-pixelArgb32ToPixelRGBA8 (C.PixelArgb32 a r g b) = J.PixelRGBA8 r' g' b' a
-	where
-	r' = r `unit` (0xff, a)
-	g' = g `unit` (0xff, a)
-	b' = b `unit` (0xff, a)
-
-unit :: Word8 -> (Word8, Word8) -> Word8
-n `unit` (m, d) = fromIntegral
-	(fromIntegral n * fromIntegral m `div'` fromIntegral d :: Word16)
-
-infixl 7 `div'`
-
-div' :: Integral n => n -> n -> n
-_ `div'` 0 = 0
-n `div'` m = n `div` m
+pixelArgb32ToPixelRGBA8 (C.PixelArgb32Straight a r g b) = J.PixelRGBA8 r g b a
 
 cairoArgb32ToJuicyRGBA8 :: C.Argb32 -> J.Image J.PixelRGBA8
 cairoArgb32ToJuicyRGBA8 = cairoToJuicy pixelArgb32ToPixelRGBA8
 
 sample1 :: C.Argb32
-sample1 = C.generateImage 256 256 \x y -> C.PixelArgb32
+sample1 = C.generateImage 256 256 \x y -> C.PixelArgb32Straight
 	255
 	(fromIntegral x)
 	(fromIntegral y)
@@ -52,8 +37,7 @@ juicyToCairo f i = C.generateImage
 	(\x y -> f $ J.pixelAt i (fromIntegral x) (fromIntegral y))
 
 pixelRGBA8ToPixelArgb32 :: J.PixelRGBA8 -> C.PixelArgb32
-pixelRGBA8ToPixelArgb32 (J.PixelRGBA8 r g b a) = let u = (a, 0xff) in
-	C.PixelArgb32 a (r `unit` u) (g `unit` u) (b `unit` u)
+pixelRGBA8ToPixelArgb32 (J.PixelRGBA8 r g b a) = C.PixelArgb32Straight a r g b
 
 juicyRGBA8ToCairoArgb32 :: J.Image J.PixelRGBA8 -> C.Argb32
 juicyRGBA8ToCairoArgb32 = juicyToCairo pixelRGBA8ToPixelArgb32
