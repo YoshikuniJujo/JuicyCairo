@@ -1,7 +1,9 @@
 {-# LANGUAGE BlockArguments #-}
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
-module Data.JuicyCairo (cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32) where
+module Data.JuicyCairo (
+	cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32,
+	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24 ) where
 
 import Control.Arrow
 import Data.Maybe
@@ -19,6 +21,12 @@ pixelArgb32ToPixelRGBA8 (C.PixelArgb32Straight a r g b) = J.PixelRGBA8 r g b a
 
 cairoArgb32ToJuicyRGBA8 :: C.Argb32 -> J.Image J.PixelRGBA8
 cairoArgb32ToJuicyRGBA8 = cairoToJuicy pixelArgb32ToPixelRGBA8
+
+pixelRgb24ToPixelRGB8 :: C.PixelRgb24 -> J.PixelRGB8
+pixelRgb24ToPixelRGB8 (C.PixelRgb24 r g b) = J.PixelRGB8 r g b
+
+cairoRgb24ToJuicyRGB8 :: C.Rgb24 -> J.Image J.PixelRGB8
+cairoRgb24ToJuicyRGB8 = cairoToJuicy pixelRgb24ToPixelRGB8
 
 sample1 :: C.Argb32
 sample1 = C.generateImage 256 256 \x y -> C.PixelArgb32Straight
@@ -41,3 +49,9 @@ pixelRGBA8ToPixelArgb32 (J.PixelRGBA8 r g b a) = C.PixelArgb32Straight a r g b
 
 juicyRGBA8ToCairoArgb32 :: J.Image J.PixelRGBA8 -> C.Argb32
 juicyRGBA8ToCairoArgb32 = juicyToCairo pixelRGBA8ToPixelArgb32
+
+pixelRGB8ToPixelRgb24 :: J.PixelRGB8 -> C.PixelRgb24
+pixelRGB8ToPixelRgb24 (J.PixelRGB8 r g b) = C.PixelRgb24 r g b
+
+juicyRGB8ToCairoRgb24 :: J.Image J.PixelRGB8 -> C.Rgb24
+juicyRGB8ToCairoRgb24 = juicyToCairo pixelRGB8ToPixelRgb24
