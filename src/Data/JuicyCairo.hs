@@ -74,7 +74,7 @@ cairoA8ToJuicyY8 :: C.A8 -> J.Image J.Pixel8
 cairoA8ToJuicyY8 = cairoToJuicy pixelA8ToPixel8
 
 pixel8ToPixelA1 :: Word8 -> J.Pixel8 -> C.PixelA1
-pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (< t)
+pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (t <)
 
 juicyY8ToCairoA1 :: Word8 -> J.Image J.Pixel8 -> C.A1
 juicyY8ToCairoA1 = juicyToCairo . pixel8ToPixelA1
