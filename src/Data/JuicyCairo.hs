@@ -1,14 +1,17 @@
-{-# LANGUAGE BlockArguments #-}
+{-# LANGUAGE BlockArguments, LambdaCase #-}
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
 module Data.JuicyCairo (
 	cairoToJuicy, juicyToCairo,
 	cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32,
 	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24,
-	cairoA8ToJuicyY8, juicyY8ToCairoA8 ) where
+	cairoA8ToJuicyY8, juicyY8ToCairoA8,
+	cairoA1ToJuicyY8, juicyY8ToCairoA1 ) where
 
 import Control.Arrow
+import Data.Bool
 import Data.Maybe
+import Data.Word
 
 import qualified Data.CairoImage.Internal as C
 import qualified Codec.Picture as J
@@ -69,3 +72,15 @@ pixelA8ToPixel8 (C.PixelA8 b) = b
 
 cairoA8ToJuicyY8 :: C.A8 -> J.Image J.Pixel8
 cairoA8ToJuicyY8 = cairoToJuicy pixelA8ToPixel8
+
+pixel8ToPixelA1 :: Word8 -> J.Pixel8 -> C.PixelA1
+pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (< t)
+
+juicyY8ToCairoA1 :: Word8 -> J.Image J.Pixel8 -> C.A1
+juicyY8ToCairoA1 = juicyToCairo . pixel8ToPixelA1
+
+pixelA1ToPixel8 :: C.PixelA1 -> J.Pixel8
+pixelA1ToPixel8 = \case C.PixelA1 C.O -> 0x00; C.PixelA1 C.I -> 0xff
+
+cairoA1ToJuicyY8 :: C.A1 -> J.Image J.Pixel8
+cairoA1ToJuicyY8 = cairoToJuicy pixelA1ToPixel8
