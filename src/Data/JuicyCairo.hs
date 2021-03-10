@@ -2,8 +2,10 @@
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
 module Data.JuicyCairo (
+	cairoToJuicy, juicyToCairo,
 	cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32,
-	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24 ) where
+	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24,
+	cairoA8ToJuicy8, juicy8ToCairoA8 ) where
 
 import Control.Arrow
 import Data.Maybe
@@ -55,3 +57,15 @@ pixelRGB8ToPixelRgb24 (J.PixelRGB8 r g b) = C.PixelRgb24 r g b
 
 juicyRGB8ToCairoRgb24 :: J.Image J.PixelRGB8 -> C.Rgb24
 juicyRGB8ToCairoRgb24 = juicyToCairo pixelRGB8ToPixelRgb24
+
+pixel8ToPixelA8 :: J.Pixel8 -> C.PixelA8
+pixel8ToPixelA8 b = C.PixelA8 b
+
+juicy8ToCairoA8 :: J.Image J.Pixel8 -> C.A8
+juicy8ToCairoA8 = juicyToCairo pixel8ToPixelA8
+
+pixelA8ToPixel8 :: C.PixelA8 -> J.Pixel8
+pixelA8ToPixel8 (C.PixelA8 b) = b
+
+cairoA8ToJuicy8 :: C.A8 -> J.Image J.Pixel8
+cairoA8ToJuicy8 = cairoToJuicy pixelA8ToPixel8
