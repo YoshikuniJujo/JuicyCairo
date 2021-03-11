@@ -5,6 +5,7 @@ module Data.JuicyCairo (
 	cairoToJuicy, juicyToCairo,
 	cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32,
 	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24,
+	cairoRgb16_565ToJuicyRGB8, juicyRGB8ToCairoRgb16_565,
 	cairoA8ToJuicyY8, juicyY8ToCairoA8,
 	cairoA1ToJuicyY8, juicyY8ToCairoA1 ) where
 
@@ -60,6 +61,18 @@ pixelRGB8ToPixelRgb24 (J.PixelRGB8 r g b) = C.PixelRgb24 r g b
 
 juicyRGB8ToCairoRgb24 :: J.Image J.PixelRGB8 -> C.Rgb24
 juicyRGB8ToCairoRgb24 = juicyToCairo pixelRGB8ToPixelRgb24
+
+pixelRGB8ToPixelRgb16_565 :: J.PixelRGB8 -> C.PixelRgb16_565
+pixelRGB8ToPixelRgb16_565 (J.PixelRGB8 r g b) = C.PixelRgb16_565 r g b
+
+pixelRgb16_565ToPixelRGB8 :: C.PixelRgb16_565 -> J.PixelRGB8
+pixelRgb16_565ToPixelRGB8 (C.PixelRgb16_565 r g b) = J.PixelRGB8 r g b
+
+juicyRGB8ToCairoRgb16_565 :: J.Image J.PixelRGB8 -> C.Rgb16_565
+juicyRGB8ToCairoRgb16_565 = juicyToCairo pixelRGB8ToPixelRgb16_565
+
+cairoRgb16_565ToJuicyRGB8 :: C.Rgb16_565 -> J.Image J.PixelRGB8
+cairoRgb16_565ToJuicyRGB8 = cairoToJuicy pixelRgb16_565ToPixelRGB8
 
 pixel8ToPixelA8 :: J.Pixel8 -> C.PixelA8
 pixel8ToPixelA8 b = C.PixelA8 b
