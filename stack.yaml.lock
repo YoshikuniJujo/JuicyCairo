@@ -10,11 +10,11 @@ packages:
     git: https://github.com/YoshikuniJujo/cairo-image.git
     pantry-tree:
       size: 817
-      sha256: 165046c6052ef254a75861c569424b8df39b066ab8a5e6a6433aa1fbc576617d
-    commit: a77afd64d3a376ba3449712f70414ae272c5707b
+      sha256: 068479f919f46c9fc0ba02b880d7c308f42e74497b4ba83979c78ead0b5c2d00
+    commit: f3ec7cbeb035d6a9950c2d3b1aaa7facbe655485
   original:
     git: https://github.com/YoshikuniJujo/cairo-image.git
-    commit: a77afd64d3a376ba3449712f70414ae272c5707b
+    commit: f3ec7cbeb035d6a9950c2d3b1aaa7facbe655485
 snapshots:
 - completed:
     size: 563103
