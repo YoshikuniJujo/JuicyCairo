@@ -106,7 +106,7 @@ cairoRgb30ToJuicyRGB16 :: C.Rgb30 -> J.Image J.PixelRGB16
 cairoRgb30ToJuicyRGB16 = cairoToJuicy pixelRgb30ToPixelRGB16
 
 pixel8ToPixelA8 :: J.Pixel8 -> C.PixelA8
-pixel8ToPixelA8 b = C.PixelA8 b
+pixel8ToPixelA8 = C.PixelA8
 
 juicyY8ToCairoA8 :: J.Image J.Pixel8 -> C.A8
 juicyY8ToCairoA8 = juicyToCairo pixel8ToPixelA8
@@ -130,9 +130,9 @@ cairoA1ToJuicyY8 :: C.A1 -> J.Image J.Pixel8
 cairoA1ToJuicyY8 = cairoToJuicy pixelA1ToPixel8
 
 cairoMutToJuicy :: (C.ImageMut im, J.Pixel p, PrimMonad m) => (C.PixelMut im -> p) -> im (PrimState m) -> m (J.Image p)
-cairoMutToJuicy f i = (uncurry J.withImage)
+cairoMutToJuicy f i = uncurry J.withImage
 	(fromIntegral *** fromIntegral $ C.imageMutSize i)
-	(\x y -> (f . fromJust <$> C.getPixel i (fromIntegral x) (fromIntegral y)))
+	\x y -> f . fromJust <$> C.getPixel i (fromIntegral x) (fromIntegral y)
 
 juicyToCairoMut :: (J.Pixel p, C.ImageMut im, PrimMonad m) => (p -> C.PixelMut im) -> J.Image p -> m (im (PrimState m))
 juicyToCairoMut f i = do
