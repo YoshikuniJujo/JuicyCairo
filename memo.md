@@ -24,54 +24,54 @@ refactoring
 
 * [x] refactor document
 	+ [x] Data.JuicyCairo
-* [ ] refactor Data.JuicyCairo
+* [x] refactor Data.JuicyCairo
 	+ [x] export list
 	+ [x] import list
 	+ [x] structure
-	+ [ ] body
-		- [ ] CAIRO IMAGE => JUICY IMAGE
-			* [ ] function `cairoToJuicy`
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
-		- [ ] JUICY IMAGE => CAIRO IMAGE
-			* [ ] function `juicyToCairo`
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
-		- [ ] CAIRO MUTABLE IMAGE => JUICY IMAGE
-			* [ ] function `cairoMutToJuicy`
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
-		- [ ] JUICY IMAGE => CAIRO MUTABLE IMAGE
-			* [ ] function `juicyToCairoMut`
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
-		- [ ] CAIRO PIXEL => JUICY PIXEL
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
-		- [ ] JUICY PIXEL => CAIRO PIXEL
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-			* [ ] A1
-			* [ ] Rgb16_565
-			* [ ] Rgb30
+	+ [x] body
+		- [x] CAIRO IMAGE => JUICY IMAGE
+			* [x] function `cairoToJuicy`
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
+		- [x] JUICY IMAGE => CAIRO IMAGE
+			* [x] function `juicyToCairo`
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
+		- [x] CAIRO MUTABLE IMAGE => JUICY IMAGE
+			* [x] function `cairoMutToJuicy`
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
+		- [x] JUICY IMAGE => CAIRO MUTABLE IMAGE
+			* [x] function `juicyToCairoMut`
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
+		- [x] CAIRO PIXEL => JUICY PIXEL
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
+		- [x] JUICY PIXEL => CAIRO PIXEL
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+			* [x] A1
+			* [x] Rgb16_565
+			* [x] Rgb30
