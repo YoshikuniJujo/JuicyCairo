@@ -14,6 +14,7 @@ module Data.JuicyCairo (
 	cairoArgb32MutToJuicyRGBA8, juicyRGBA8ToCairoArgb32Mut,
 	cairoRgb24MutToJuicyRGB8, juicyRGB8ToCairoRgb24Mut,
 	cairoA8MutToJuicyY8, juicyY8ToCairoA8Mut,
+	cairoA1MutToJuicyY8, juicyY8ToCairoA1Mut,
 	) where
 
 import Control.Arrow
@@ -151,3 +152,9 @@ cairoA8MutToJuicyY8 = cairoMutToJuicy pixelA8ToPixel8
 
 juicyY8ToCairoA8Mut :: PrimMonad m => J.Image J.Pixel8 -> m (C.A8Mut (PrimState m))
 juicyY8ToCairoA8Mut = juicyToCairoMut pixel8ToPixelA8
+
+cairoA1MutToJuicyY8 :: PrimMonad m => C.A1Mut (PrimState m) -> m (J.Image J.Pixel8)
+cairoA1MutToJuicyY8 = cairoMutToJuicy pixelA1ToPixel8
+
+juicyY8ToCairoA1Mut :: PrimMonad m => Word8 -> J.Image J.Pixel8 -> m (C.A1Mut (PrimState m))
+juicyY8ToCairoA1Mut = juicyToCairoMut . pixel8ToPixelA1

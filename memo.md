@@ -15,7 +15,7 @@ enhancement
 	+ [x] Argb32 <=> RGBA8
 	+ [x] Rgb24 <=> RGB8
 	+ [x] A8 <=> Y8
-	+ [ ] A1 <=> Y8
+	+ [x] A1 <=> Y8
 	+ [ ] Rgb16\_565 <=> RGB8
 	+ [ ] Rgb30 <=> RGB16
 
