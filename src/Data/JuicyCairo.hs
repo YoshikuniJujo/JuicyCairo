@@ -8,9 +8,15 @@ module Data.JuicyCairo (
 	cairoRgb16_565ToJuicyRGB8, juicyRGB8ToCairoRgb16_565,
 	cairoRgb30ToJuicyRGB16, juicyRGB16ToCairoRgb30,
 	cairoA8ToJuicyY8, juicyY8ToCairoA8,
-	cairoA1ToJuicyY8, juicyY8ToCairoA1 ) where
+	cairoA1ToJuicyY8, juicyY8ToCairoA1,
+
+	cairoMutToJuicy, juicyToCairoMut,
+	cairoArgb32MutToJuicyRGBA8, juicyRGBA8ToCairoArgb32Mut
+	) where
 
 import Control.Arrow
+import Control.Monad.Primitive
+import Data.Foldable
 import Data.Bool
 import Data.Maybe
 import Data.Word
@@ -110,3 +116,24 @@ pixelA1ToPixel8 = \case C.PixelA1 C.O -> 0x00; C.PixelA1 C.I -> 0xff
 
 cairoA1ToJuicyY8 :: C.A1 -> J.Image J.Pixel8
 cairoA1ToJuicyY8 = cairoToJuicy pixelA1ToPixel8
+
+cairoMutToJuicy :: (C.ImageMut im, J.Pixel p, PrimMonad m) => (C.PixelMut im -> p) -> im (PrimState m) -> m (J.Image p)
+cairoMutToJuicy f i = (uncurry J.withImage)
+	(fromIntegral *** fromIntegral $ C.imageMutSize i)
+	(\x y -> (f . fromJust <$> C.getPixel i (fromIntegral x) (fromIntegral y)))
+
+juicyToCairoMut :: (J.Pixel p, C.ImageMut im, PrimMonad m) => (p -> C.PixelMut im) -> J.Image p -> m (im (PrimState m))
+juicyToCairoMut f i = do
+	im <- C.newImageMut (fromIntegral w) (fromIntegral h)
+	for_ [0 .. h] \y -> for_ [0 .. w] \x ->
+		C.putPixel im (fromIntegral x) (fromIntegral y) . f $ J.pixelAt i x y
+	pure im
+	where
+	w = J.imageWidth i
+	h = J.imageHeight i
+
+cairoArgb32MutToJuicyRGBA8 :: PrimMonad m => C.Argb32Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
+cairoArgb32MutToJuicyRGBA8 = cairoMutToJuicy pixelArgb32ToPixelRGBA8
+
+juicyRGBA8ToCairoArgb32Mut :: PrimMonad m => J.Image J.PixelRGBA8 -> m (C.Argb32Mut (PrimState m))
+juicyRGBA8ToCairoArgb32Mut = juicyToCairoMut pixelRGBA8ToPixelArgb32
