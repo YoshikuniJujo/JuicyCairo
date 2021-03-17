@@ -27,5 +27,51 @@ refactoring
 * [ ] refactor Data.JuicyCairo
 	+ [x] export list
 	+ [x] import list
-	+ [ ] structure
+	+ [x] structure
 	+ [ ] body
+		- [ ] CAIRO IMAGE => JUICY IMAGE
+			* [ ] function `cairoToJuicy`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY IMAGE => CAIRO IMAGE
+			* [ ] function `juicyToCairo`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] CAIRO MUTABLE IMAGE => JUICY IMAGE
+			* [ ] function `cairoMutToJuicy`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY IMAGE => CAIRO MUTABLE IMAGE
+			* [ ] function `juicyToCairoMut`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] CAIRO PIXEL => JUICY PIXEL
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY PIXEL => CAIRO PIXEL
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+			* [ ] A1
+			* [ ] Rgb16_565
+			* [ ] Rgb30
