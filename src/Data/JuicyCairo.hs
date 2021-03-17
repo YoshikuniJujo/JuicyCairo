@@ -2,22 +2,29 @@
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
 module Data.JuicyCairo (
-	cairoToJuicy, juicyToCairo,
-	cairoArgb32ToJuicyRGBA8, juicyRGBA8ToCairoArgb32,
-	cairoRgb24ToJuicyRGB8, juicyRGB8ToCairoRgb24,
-	cairoRgb16_565ToJuicyRGB8, juicyRGB8ToCairoRgb16_565,
-	cairoRgb30ToJuicyRGB16, juicyRGB16ToCairoRgb30,
-	cairoA8ToJuicyY8, juicyY8ToCairoA8,
-	cairoA1ToJuicyY8, juicyY8ToCairoA1,
+	-- * Immutable
+	-- ** Cairo Image =\> JuicyPixels Image
+	cairoToJuicy,
+	cairoArgb32ToJuicyRGBA8, cairoRgb24ToJuicyRGB8,
+	cairoA8ToJuicyY8, cairoA1ToJuicyY8,
+	cairoRgb16_565ToJuicyRGB8, cairoRgb30ToJuicyRGB16,
+	-- ** JuicyPixels Image =\> Cairo Image
+	juicyToCairo,
+	juicyRGBA8ToCairoArgb32, juicyRGB8ToCairoRgb24,
+	juicyY8ToCairoA8, juicyY8ToCairoA1,
+	juicyRGB8ToCairoRgb16_565, juicyRGB16ToCairoRgb30,
 
-	cairoMutToJuicy, juicyToCairoMut,
-	cairoArgb32MutToJuicyRGBA8, juicyRGBA8ToCairoArgb32Mut,
-	cairoRgb24MutToJuicyRGB8, juicyRGB8ToCairoRgb24Mut,
-	cairoA8MutToJuicyY8, juicyY8ToCairoA8Mut,
-	cairoA1MutToJuicyY8, juicyY8ToCairoA1Mut,
-	cairoRgb16_565MutToJuicyRGB8, juicyRGB8ToCairoRgb16_565Mut,
-	cairoRgb30MutToJuicyRGB16, juicyRGB16ToCairoRgb30Mut
-	) where
+	-- * Mutable
+	-- ** Cairo Mutable Image =\> JuicyPixels Image
+	cairoMutToJuicy,
+	cairoArgb32MutToJuicyRGBA8, cairoRgb24MutToJuicyRGB8,
+	cairoA8MutToJuicyY8, cairoA1MutToJuicyY8,
+	cairoRgb16_565MutToJuicyRGB8, cairoRgb30MutToJuicyRGB16,
+	-- ** JuicyPixels Image =\> Cairo Mutable Image
+	juicyToCairoMut,
+	juicyRGBA8ToCairoArgb32Mut, juicyRGB8ToCairoRgb24Mut,
+	juicyY8ToCairoA8Mut, juicyY8ToCairoA1Mut,
+	juicyRGB8ToCairoRgb16_565Mut, juicyRGB16ToCairoRgb30Mut ) where
 
 import Control.Arrow
 import Control.Monad.Primitive

@@ -22,8 +22,8 @@ enhancement
 refactoring
 -----------
 
-* [ ] refactor document
-	+ [ ] Data.JuicyCairo
+* [x] refactor document
+	+ [x] Data.JuicyCairo
 * [ ] refactor Data.JuicyCairo
 	+ [ ] export list
 	+ [ ] import list
