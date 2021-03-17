@@ -26,15 +26,21 @@ module Data.JuicyCairo (
 	juicyY8ToCairoA8Mut, juicyY8ToCairoA1Mut,
 	juicyRGB8ToCairoRgb16_565Mut, juicyRGB16ToCairoRgb30Mut ) where
 
-import Control.Arrow
-import Control.Monad.Primitive
-import Data.Foldable
-import Data.Bool
-import Data.Maybe
-import Data.Word
+import Control.Arrow ((***))
+import Control.Monad.Primitive (PrimMonad, PrimState)
+import Data.Foldable (for_)
+import Data.Bool (bool)
+import Data.Maybe (fromJust)
+import Data.Word (Word8)
 
 import qualified Data.CairoImage.Internal as C
 import qualified Codec.Picture as J
+
+---------------------------------------------------------------------------
+
+-- *
+
+---------------------------------------------------------------------------
 
 cairoToJuicy :: (C.Image i, J.Pixel p) => (C.Pixel i -> p) -> i -> J.Image p
 cairoToJuicy f i = (uncurry . J.generateImage)

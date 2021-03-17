@@ -25,7 +25,7 @@ refactoring
 * [x] refactor document
 	+ [x] Data.JuicyCairo
 * [ ] refactor Data.JuicyCairo
-	+ [ ] export list
-	+ [ ] import list
+	+ [x] export list
+	+ [x] import list
 	+ [ ] structure
 	+ [ ] body
