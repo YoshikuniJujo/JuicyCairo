@@ -18,6 +18,13 @@ enhancement
 	+ [x] A1 <=> Y8
 	+ [x] Rgb16\_565 <=> RGB8
 	+ [x] Rgb30 <=> RGB16
+* [ ] repair A8 and A1
+	+ [ ] add A8 <=> YA8
+	+ [ ] add A8 <=> RGBA8
+	+ [ ] add A1 <=> YA8
+	+ [ ] add A1 <=> RGBA8
+	+ [ ] remove A8 <=> Y8
+	+ [ ] remove A1 <=> Y8
 
 refactoring
 -----------
