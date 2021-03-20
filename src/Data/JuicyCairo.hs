@@ -13,7 +13,8 @@ module Data.JuicyCairo (
 	-- ** JuicyPixels Image =\> Cairo Image
 	juicyToCairo,
 	juicyRGBA8ToCairoArgb32, juicyRGB8ToCairoRgb24,
-	juicyY8ToCairoA8, juicyYA8ToCairoA8, juicyY8ToCairoA1, juicyYA8ToCairoA1,
+	juicyY8ToCairoA8, juicyRGBA8ToCairoA8, juicyYA8ToCairoA8,
+	juicyY8ToCairoA1, juicyYA8ToCairoA1,
 	juicyRGB8ToCairoRgb16_565, juicyRGB16ToCairoRgb30,
 
 	-- * Mutable
@@ -100,6 +101,9 @@ juicyY8ToCairoA8 = juicyToCairo pixel8ToPixelA8
 
 juicyYA8ToCairoA8 :: J.Image J.PixelYA8 -> C.A8
 juicyYA8ToCairoA8 = juicyToCairo pixelYA8ToPixelA8
+
+juicyRGBA8ToCairoA8 :: J.Image J.PixelRGBA8 -> C.A8
+juicyRGBA8ToCairoA8 = juicyToCairo pixelRGBA8ToPixelA8
 
 juicyY8ToCairoA1 :: Word8 -> J.Image J.Pixel8 -> C.A1
 juicyY8ToCairoA1 = juicyToCairo . pixel8ToPixelA1
@@ -226,6 +230,9 @@ pixel8ToPixelA8 = C.PixelA8
 
 pixelYA8ToPixelA8 :: J.PixelYA8 -> C.PixelA8
 pixelYA8ToPixelA8 (J.PixelYA8 _ a) = C.PixelA8 a
+
+pixelRGBA8ToPixelA8 :: J.PixelRGBA8 -> C.PixelA8
+pixelRGBA8ToPixelA8 (J.PixelRGBA8 _ _ _ a) = C.PixelA8 a
 
 pixel8ToPixelA1 :: Word8 -> J.Pixel8 -> C.PixelA1
 pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (t <=)
