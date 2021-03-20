@@ -7,7 +7,8 @@ module Data.JuicyCairo (
 	-- ** Cairo Image =\> JuicyPixels Image
 	cairoToJuicy,
 	cairoArgb32ToJuicyRGBA8, cairoRgb24ToJuicyRGB8,
-	cairoA8ToJuicyY8, cairoA1ToJuicyY8,
+	cairoA8ToJuicyY8, cairoA8ToJuicyYA8,
+	cairoA1ToJuicyY8,
 	cairoRgb16_565ToJuicyRGB8, cairoRgb30ToJuicyRGB16,
 	-- ** JuicyPixels Image =\> Cairo Image
 	juicyToCairo,
@@ -63,6 +64,9 @@ cairoRgb24ToJuicyRGB8 = cairoToJuicy pixelRgb24ToPixelRGB8
 
 cairoA8ToJuicyY8 :: C.A8 -> J.Image J.Pixel8
 cairoA8ToJuicyY8 = cairoToJuicy pixelA8ToPixel8
+
+cairoA8ToJuicyYA8 :: Word8 -> C.A8 -> J.Image J.PixelYA8
+cairoA8ToJuicyYA8 y = cairoToJuicy $ pixelA8ToPixelYA8 y
 
 cairoA1ToJuicyY8 :: C.A1 -> J.Image J.Pixel8
 cairoA1ToJuicyY8 = cairoToJuicy pixelA1ToPixel8
@@ -185,6 +189,9 @@ pixelRgb24ToPixelRGB8 (C.PixelRgb24 r g b) = J.PixelRGB8 r g b
 
 pixelA8ToPixel8 :: C.PixelA8 -> J.Pixel8
 pixelA8ToPixel8 (C.PixelA8 b) = b
+
+pixelA8ToPixelYA8 :: Word8 -> C.PixelA8 -> J.PixelYA8
+pixelA8ToPixelYA8 y (C.PixelA8 a) = J.PixelYA8 y a
 
 pixelA1ToPixel8 :: C.PixelA1 -> J.Pixel8
 pixelA1ToPixel8 = \case C.PixelA1 C.O -> 0x00; C.PixelA1 C.I -> 0xff

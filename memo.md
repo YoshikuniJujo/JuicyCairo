@@ -21,9 +21,13 @@ enhancement
 * [ ] repair A8 and A1
 	+ [ ] add A8 <=> YA8
 		- [x] `juicyYA8ToCairoA8`
+		- [x] `cairoA8ToJuicyYA8`
 		- [ ] others
 	+ [ ] add A8 <=> RGBA8
 	+ [ ] add A1 <=> YA8
+		- [ ] `juicyYA8ToCairoA1`
+		- [ ] `cairoA1ToJuicyYA8`
+		- [ ] others
 	+ [ ] add A1 <=> RGBA8
 	+ [ ] remove A8 <=> Y8
 	+ [ ] remove A1 <=> Y8
