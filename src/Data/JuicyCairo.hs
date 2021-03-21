@@ -69,7 +69,7 @@ cairoA8ToJuicyRGBA8 :: Word8 -> Word8 -> Word8 -> C.A8 -> J.Image J.PixelRGBA8
 cairoA8ToJuicyRGBA8 r g b = cairoToJuicy $ pixelA8ToPixelRGBA8 r g b
 
 cairoA8ToJuicyYA8 :: Word8 -> C.A8 -> J.Image J.PixelYA8
-cairoA8ToJuicyYA8 y = cairoToJuicy $ pixelA8ToPixelYA8 y
+cairoA8ToJuicyYA8 = cairoToJuicy . pixelA8ToPixelYA8
 
 cairoA1ToJuicyRGBA8 :: Word8 -> Word8 -> Word8 -> C.A1 -> J.Image J.PixelRGBA8
 cairoA1ToJuicyRGBA8 r g b = cairoToJuicy $ pixelA1ToPixelRGBA8 r g b

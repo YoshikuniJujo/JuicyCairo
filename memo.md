@@ -74,18 +74,18 @@ refactoring
 		- [x] CAIRO PIXEL => JUICY PIXEL
 		- [x] JUICY PIXEL => CAIRO PIXEL
 	+ [ ] body
-		- [ ] CAIRO IMAGE => JUICY IMAGE
-			* [ ] function `cairoToJuicy`
-			* [ ] Argb32
-			* [ ] Rgb24
-			* [ ] A8
-				+ [ ] RGBA 8
-				+ [ ] YA 8
-			* [ ] A1
-				+ [ ] RGBA 8
-				+ [ ] YA 8
-			* [ ] Rgb16_565
-			* [ ] Rgb30
+		- [x] CAIRO IMAGE => JUICY IMAGE
+			* [x] function `cairoToJuicy`
+			* [x] Argb32
+			* [x] Rgb24
+			* [x] A8
+				+ [x] RGBA 8
+				+ [x] YA 8
+			* [x] A1
+				+ [x] RGBA 8
+				+ [x] YA 8
+			* [x] Rgb16_565
+			* [x] Rgb30
 		- [ ] JUICY IMAGE => CAIRO IMAGE
 			* [ ] function `juicyToCairo`
 			* [ ] Argb32
