@@ -33,7 +33,7 @@ enhancement
 		- [ ] others
 	+ [ ] add A1 <=> RGBA8
 		- [x] `juicyRGBA8ToCairoA1`
-		- [ ] `cairoA1ToJuicyRGBA8`
+		- [x] `cairoA1ToJuicyRGBA8`
 		- [ ] others
 	+ [ ] remove A8 <=> Y8
 	+ [ ] remove A1 <=> Y8
