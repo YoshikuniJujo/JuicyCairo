@@ -7,28 +7,28 @@ module Data.JuicyCairo (
 	-- ** Cairo Image =\> JuicyPixels Image
 	cairoToJuicy,
 	cairoArgb32ToJuicyRGBA8, cairoRgb24ToJuicyRGB8,
-	cairoA8ToJuicyY8, cairoA8ToJuicyYA8, cairoA8ToJuicyRGBA8,
-	cairoA1ToJuicyY8, cairoA1ToJuicyYA8, cairoA1ToJuicyRGBA8,
+	cairoA8ToJuicyYA8, cairoA8ToJuicyRGBA8,
+	cairoA1ToJuicyYA8, cairoA1ToJuicyRGBA8,
 	cairoRgb16_565ToJuicyRGB8, cairoRgb30ToJuicyRGB16,
 	-- ** JuicyPixels Image =\> Cairo Image
 	juicyToCairo,
 	juicyRGBA8ToCairoArgb32, juicyRGB8ToCairoRgb24,
-	juicyY8ToCairoA8, juicyRGBA8ToCairoA8, juicyYA8ToCairoA8,
-	juicyY8ToCairoA1, juicyYA8ToCairoA1, juicyRGBA8ToCairoA1,
+	juicyRGBA8ToCairoA8, juicyYA8ToCairoA8,
+	juicyYA8ToCairoA1, juicyRGBA8ToCairoA1,
 	juicyRGB8ToCairoRgb16_565, juicyRGB16ToCairoRgb30,
 
 	-- * Mutable
 	-- ** Cairo Mutable Image =\> JuicyPixels Image
 	cairoMutToJuicy,
 	cairoArgb32MutToJuicyRGBA8, cairoRgb24MutToJuicyRGB8,
-	cairoA8MutToJuicyY8, cairoA8MutToJuicyYA8, cairoA8MutToJuicyRGBA8,
-	cairoA1MutToJuicyY8, cairoA1MutToJuicyYA8, cairoA1MutToJuicyRGBA8,
+	cairoA8MutToJuicyYA8, cairoA8MutToJuicyRGBA8,
+	cairoA1MutToJuicyYA8, cairoA1MutToJuicyRGBA8,
 	cairoRgb16_565MutToJuicyRGB8, cairoRgb30MutToJuicyRGB16,
 	-- ** JuicyPixels Image =\> Cairo Mutable Image
 	juicyToCairoMut,
 	juicyRGBA8ToCairoArgb32Mut, juicyRGB8ToCairoRgb24Mut,
-	juicyY8ToCairoA8Mut, juicyYA8ToCairoA8Mut, juicyRGBA8ToCairoA8Mut,
-	juicyY8ToCairoA1Mut, juicyYA8ToCairoA1Mut, juicyRGBA8ToCairoA1Mut,
+	juicyYA8ToCairoA8Mut, juicyRGBA8ToCairoA8Mut,
+	juicyYA8ToCairoA1Mut, juicyRGBA8ToCairoA1Mut,
 	juicyRGB8ToCairoRgb16_565Mut, juicyRGB16ToCairoRgb30Mut ) where
 
 import Control.Arrow ((***))
@@ -65,17 +65,11 @@ cairoArgb32ToJuicyRGBA8 = cairoToJuicy pixelArgb32ToPixelRGBA8
 cairoRgb24ToJuicyRGB8 :: C.Rgb24 -> J.Image J.PixelRGB8
 cairoRgb24ToJuicyRGB8 = cairoToJuicy pixelRgb24ToPixelRGB8
 
-cairoA8ToJuicyY8 :: C.A8 -> J.Image J.Pixel8
-cairoA8ToJuicyY8 = cairoToJuicy pixelA8ToPixel8
-
 cairoA8ToJuicyYA8 :: Word8 -> C.A8 -> J.Image J.PixelYA8
 cairoA8ToJuicyYA8 y = cairoToJuicy $ pixelA8ToPixelYA8 y
 
 cairoA8ToJuicyRGBA8 :: Word8 -> Word8 -> Word8 -> C.A8 -> J.Image J.PixelRGBA8
 cairoA8ToJuicyRGBA8 r g b = cairoToJuicy $ pixelA8ToPixelRGBA8 r g b
-
-cairoA1ToJuicyY8 :: C.A1 -> J.Image J.Pixel8
-cairoA1ToJuicyY8 = cairoToJuicy pixelA1ToPixel8
 
 cairoA1ToJuicyYA8 :: Word8 -> C.A1 -> J.Image J.PixelYA8
 cairoA1ToJuicyYA8 = cairoToJuicy . pixelA1ToPixelYA8
@@ -104,17 +98,11 @@ juicyRGBA8ToCairoArgb32 = juicyToCairo pixelRGBA8ToPixelArgb32
 juicyRGB8ToCairoRgb24 :: J.Image J.PixelRGB8 -> C.Rgb24
 juicyRGB8ToCairoRgb24 = juicyToCairo pixelRGB8ToPixelRgb24
 
-juicyY8ToCairoA8 :: J.Image J.Pixel8 -> C.A8
-juicyY8ToCairoA8 = juicyToCairo pixel8ToPixelA8
-
 juicyYA8ToCairoA8 :: J.Image J.PixelYA8 -> C.A8
 juicyYA8ToCairoA8 = juicyToCairo pixelYA8ToPixelA8
 
 juicyRGBA8ToCairoA8 :: J.Image J.PixelRGBA8 -> C.A8
 juicyRGBA8ToCairoA8 = juicyToCairo pixelRGBA8ToPixelA8
-
-juicyY8ToCairoA1 :: Word8 -> J.Image J.Pixel8 -> C.A1
-juicyY8ToCairoA1 = juicyToCairo . pixel8ToPixelA1
 
 juicyYA8ToCairoA1 :: Word8 -> J.Image J.PixelYA8 -> C.A1
 juicyYA8ToCairoA1 = juicyToCairo . pixelYA8ToPixelA1
@@ -147,10 +135,6 @@ cairoRgb24MutToJuicyRGB8 :: PrimMonad m =>
 	C.Rgb24Mut (PrimState m) -> m (J.Image J.PixelRGB8)
 cairoRgb24MutToJuicyRGB8 = cairoMutToJuicy pixelRgb24ToPixelRGB8
 
-cairoA8MutToJuicyY8 :: PrimMonad m =>
-	C.A8Mut (PrimState m) -> m (J.Image J.Pixel8)
-cairoA8MutToJuicyY8 = cairoMutToJuicy pixelA8ToPixel8
-
 cairoA8MutToJuicyYA8 :: PrimMonad m =>
 	Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelYA8)
 cairoA8MutToJuicyYA8 = cairoMutToJuicy . pixelA8ToPixelYA8
@@ -158,10 +142,6 @@ cairoA8MutToJuicyYA8 = cairoMutToJuicy . pixelA8ToPixelYA8
 cairoA8MutToJuicyRGBA8 :: PrimMonad m =>
 	Word8 -> Word8 -> Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
 cairoA8MutToJuicyRGBA8 r g b = cairoMutToJuicy $ pixelA8ToPixelRGBA8 r g b
-
-cairoA1MutToJuicyY8 :: PrimMonad m =>
-	C.A1Mut (PrimState m) -> m (J.Image J.Pixel8)
-cairoA1MutToJuicyY8 = cairoMutToJuicy pixelA1ToPixel8
 
 cairoA1MutToJuicyYA8 :: PrimMonad m =>
 	Word8 -> C.A1Mut (PrimState m) -> m (J.Image J.PixelYA8)
@@ -198,10 +178,6 @@ juicyRGB8ToCairoRgb24Mut :: PrimMonad m =>
 	J.Image J.PixelRGB8 -> m (C.Rgb24Mut (PrimState m))
 juicyRGB8ToCairoRgb24Mut = juicyToCairoMut pixelRGB8ToPixelRgb24
 
-juicyY8ToCairoA8Mut :: PrimMonad m =>
-	J.Image J.Pixel8 -> m (C.A8Mut (PrimState m))
-juicyY8ToCairoA8Mut = juicyToCairoMut pixel8ToPixelA8
-
 juicyYA8ToCairoA8Mut :: PrimMonad m =>
 	J.Image J.PixelYA8 -> m (C.A8Mut (PrimState m))
 juicyYA8ToCairoA8Mut = juicyToCairoMut pixelYA8ToPixelA8
@@ -209,10 +185,6 @@ juicyYA8ToCairoA8Mut = juicyToCairoMut pixelYA8ToPixelA8
 juicyRGBA8ToCairoA8Mut :: PrimMonad m =>
 	J.Image J.PixelRGBA8 -> m (C.A8Mut (PrimState m))
 juicyRGBA8ToCairoA8Mut = juicyToCairoMut pixelRGBA8ToPixelA8
-
-juicyY8ToCairoA1Mut :: PrimMonad m =>
-	Word8 -> J.Image J.Pixel8 -> m (C.A1Mut (PrimState m))
-juicyY8ToCairoA1Mut = juicyToCairoMut . pixel8ToPixelA1
 
 juicyYA8ToCairoA1Mut :: PrimMonad m =>
 	Word8 -> J.Image J.PixelYA8 -> m (C.A1Mut (PrimState m))
@@ -240,17 +212,11 @@ pixelArgb32ToPixelRGBA8 (C.PixelArgb32Straight a r g b) = J.PixelRGBA8 r g b a
 pixelRgb24ToPixelRGB8 :: C.PixelRgb24 -> J.PixelRGB8
 pixelRgb24ToPixelRGB8 (C.PixelRgb24 r g b) = J.PixelRGB8 r g b
 
-pixelA8ToPixel8 :: C.PixelA8 -> J.Pixel8
-pixelA8ToPixel8 (C.PixelA8 b) = b
-
 pixelA8ToPixelYA8 :: Word8 -> C.PixelA8 -> J.PixelYA8
 pixelA8ToPixelYA8 y (C.PixelA8 a) = J.PixelYA8 y a
 
 pixelA8ToPixelRGBA8 :: Word8 -> Word8 -> Word8 -> C.PixelA8 -> J.PixelRGBA8
 pixelA8ToPixelRGBA8 r g b (C.PixelA8 a) = J.PixelRGBA8 r g b a
-
-pixelA1ToPixel8 :: C.PixelA1 -> J.Pixel8
-pixelA1ToPixel8 = \case C.PixelA1 C.O -> 0x00; C.PixelA1 C.I -> 0xff
 
 pixelA1ToPixelYA8 :: Word8 -> C.PixelA1 -> J.PixelYA8
 pixelA1ToPixelYA8 y (C.PixelA1 a) = J.PixelYA8 y case a of C.O -> 0x00; C.I -> 0xff
@@ -274,17 +240,11 @@ pixelRGBA8ToPixelArgb32 (J.PixelRGBA8 r g b a) = C.PixelArgb32Straight a r g b
 pixelRGB8ToPixelRgb24 :: J.PixelRGB8 -> C.PixelRgb24
 pixelRGB8ToPixelRgb24 (J.PixelRGB8 r g b) = C.PixelRgb24 r g b
 
-pixel8ToPixelA8 :: J.Pixel8 -> C.PixelA8
-pixel8ToPixelA8 = C.PixelA8
-
 pixelYA8ToPixelA8 :: J.PixelYA8 -> C.PixelA8
 pixelYA8ToPixelA8 (J.PixelYA8 _ a) = C.PixelA8 a
 
 pixelRGBA8ToPixelA8 :: J.PixelRGBA8 -> C.PixelA8
 pixelRGBA8ToPixelA8 (J.PixelRGBA8 _ _ _ a) = C.PixelA8 a
-
-pixel8ToPixelA1 :: Word8 -> J.Pixel8 -> C.PixelA1
-pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (t <=)
 
 pixelYA8ToPixelA1 :: Word8 -> J.PixelYA8 -> C.PixelA1
 pixelYA8ToPixelA1 t (J.PixelYA8 _ a) = C.PixelA1 . bool C.O C.I $ t <= a
