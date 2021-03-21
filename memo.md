@@ -66,18 +66,24 @@ refactoring
 * [ ] refactor Data.JuicyCairo
 	+ [x] export list
 	+ [x] import list
-	+ [ ] structure
+	+ [x] structure
+		- [x] CAIRO IMAGE => JUICY IMAGE
+		- [x] JUICY IMAGE => CAIRO IMAGE
+		- [x] CAIRO MUTABLE IMAGE => JUICY IMAGE
+		- [x] JUICY IMAGE => CAIRO MUTABLE IMAGE
+		- [x] CAIRO PIXEL => JUICY PIXEL
+		- [x] JUICY PIXEL => CAIRO PIXEL
 	+ [ ] body
 		- [ ] CAIRO IMAGE => JUICY IMAGE
 			* [ ] function `cairoToJuicy`
 			* [ ] Argb32
 			* [ ] Rgb24
 			* [ ] A8
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] A1
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] Rgb16_565
 			* [ ] Rgb30
 		- [ ] JUICY IMAGE => CAIRO IMAGE
@@ -85,11 +91,11 @@ refactoring
 			* [ ] Argb32
 			* [ ] Rgb24
 			* [ ] A8
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] A1
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] Rgb16_565
 			* [ ] Rgb30
 		- [ ] CAIRO MUTABLE IMAGE => JUICY IMAGE
@@ -109,32 +115,31 @@ refactoring
 			* [ ] Argb32
 			* [ ] Rgb24
 			* [ ] A8
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] A1
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] Rgb16_565
-			* [ ] Rgb30
 		- [ ] CAIRO PIXEL => JUICY PIXEL
 			* [ ] Argb32
 			* [ ] Rgb24
 			* [ ] A8
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] A1
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] Rgb16_565
 			* [ ] Rgb30
 		- [ ] JUICY PIXEL => CAIRO PIXEL
 			* [ ] Argb32
 			* [ ] Rgb24
 			* [ ] A8
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] A1
-				+ [ ] YA 8
 				+ [ ] RGBA 8
+				+ [ ] YA 8
 			* [ ] Rgb16_565
 			* [ ] Rgb30
