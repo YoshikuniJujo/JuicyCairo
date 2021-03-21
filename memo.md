@@ -32,6 +32,9 @@ enhancement
 		- [x] `cairoA1ToJuicyYA8`
 		- [ ] others
 	+ [ ] add A1 <=> RGBA8
+		- [x] `juicyRGBA8ToCairoA1`
+		- [ ] `cairoA1ToJuicyRGBA8`
+		- [ ] others
 	+ [ ] remove A8 <=> Y8
 	+ [ ] remove A1 <=> Y8
 * [ ] refactoring

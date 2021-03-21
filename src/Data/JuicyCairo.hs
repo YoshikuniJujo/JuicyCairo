@@ -14,7 +14,7 @@ module Data.JuicyCairo (
 	juicyToCairo,
 	juicyRGBA8ToCairoArgb32, juicyRGB8ToCairoRgb24,
 	juicyY8ToCairoA8, juicyRGBA8ToCairoA8, juicyYA8ToCairoA8,
-	juicyY8ToCairoA1, juicyYA8ToCairoA1,
+	juicyY8ToCairoA1, juicyYA8ToCairoA1, juicyRGBA8ToCairoA1,
 	juicyRGB8ToCairoRgb16_565, juicyRGB16ToCairoRgb30,
 
 	-- * Mutable
@@ -113,6 +113,9 @@ juicyY8ToCairoA1 = juicyToCairo . pixel8ToPixelA1
 
 juicyYA8ToCairoA1 :: Word8 -> J.Image J.PixelYA8 -> C.A1
 juicyYA8ToCairoA1 = juicyToCairo . pixelYA8ToPixelA1
+
+juicyRGBA8ToCairoA1 :: Word8 -> J.Image J.PixelRGBA8 -> C.A1
+juicyRGBA8ToCairoA1 = juicyToCairo . pixelRGBA8ToPixelA1
 
 juicyRGB8ToCairoRgb16_565 :: J.Image J.PixelRGB8 -> C.Rgb16_565
 juicyRGB8ToCairoRgb16_565 = juicyToCairo pixelRGB8ToPixelRgb16_565
@@ -245,6 +248,9 @@ pixel8ToPixelA1 t = C.PixelA1 . bool C.O C.I . (t <=)
 
 pixelYA8ToPixelA1 :: Word8 -> J.PixelYA8 -> C.PixelA1
 pixelYA8ToPixelA1 t (J.PixelYA8 _ a) = C.PixelA1 . bool C.O C.I $ t <= a
+
+pixelRGBA8ToPixelA1 :: Word8 -> J.PixelRGBA8 -> C.PixelA1
+pixelRGBA8ToPixelA1 t (J.PixelRGBA8 _ _ _ a) = C.PixelA1 . bool C.O C.I $ t <= a
 
 pixelRGB8ToPixelRgb16_565 :: J.PixelRGB8 -> C.PixelRgb16_565
 pixelRGB8ToPixelRgb16_565 (J.PixelRGB8 r g b) = C.PixelRgb16_565 r g b
