@@ -18,7 +18,7 @@ enhancement
 	+ [x] A1 <=> Y8
 	+ [x] Rgb16\_565 <=> RGB8
 	+ [x] Rgb30 <=> RGB16
-* [ ] repair A8 and A1
+* [x] repair A8 and A1
 	+ [x] add A8 <=> YA8
 		- [x] `juicyYA8ToCairoA8`
 		- [x] `cairoA8ToJuicyYA8`
@@ -48,54 +48,93 @@ refactoring
 
 * [x] refactor document
 	+ [x] Data.JuicyCairo
-* [x] refactor Data.JuicyCairo
-	+ [x] export list
-	+ [x] import list
-	+ [x] structure
-	+ [x] body
-		- [x] CAIRO IMAGE => JUICY IMAGE
-			* [x] function `cairoToJuicy`
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
-		- [x] JUICY IMAGE => CAIRO IMAGE
-			* [x] function `juicyToCairo`
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
-		- [x] CAIRO MUTABLE IMAGE => JUICY IMAGE
-			* [x] function `cairoMutToJuicy`
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
-		- [x] JUICY IMAGE => CAIRO MUTABLE IMAGE
-			* [x] function `juicyToCairoMut`
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
-		- [x] CAIRO PIXEL => JUICY PIXEL
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
-		- [x] JUICY PIXEL => CAIRO PIXEL
-			* [x] Argb32
-			* [x] Rgb24
-			* [x] A8
-			* [x] A1
-			* [x] Rgb16_565
-			* [x] Rgb30
+		- [x] Immutable
+			* [x] Cairo Image => JuicyPixels Image
+				+ [x] cairoToJuicy
+				+ [x] Arg 32 => RGBA 8
+				+ [x] Rgb 24 => RGB 8
+				+ [x] A 8 => YA 8
+				+ [x] A 8 => RGBA 8
+				+ [x] A 1 => YA 8
+				+ [x] A 1 => RGBA 8
+				+ [x] Rgb 16 565 => RGB 8
+				+ [x] Rgb 30 => RGB 16
+			* [x] JuicyPixels Image => Cairo Image
+		- [x] Mutable
+			* [x] Cairo Mutable Image => JuicyPixels Image
+			* [x] JuicyPixels Image => Cairo Mutable Image
+* [ ] refactor Data.JuicyCairo
+	+ [ ] export list
+	+ [ ] import list
+	+ [ ] structure
+	+ [ ] body
+		- [ ] CAIRO IMAGE => JUICY IMAGE
+			* [ ] function `cairoToJuicy`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY IMAGE => CAIRO IMAGE
+			* [ ] function `juicyToCairo`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] CAIRO MUTABLE IMAGE => JUICY IMAGE
+			* [ ] function `cairoMutToJuicy`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY IMAGE => CAIRO MUTABLE IMAGE
+			* [ ] function `juicyToCairoMut`
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] CAIRO PIXEL => JUICY PIXEL
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30
+		- [ ] JUICY PIXEL => CAIRO PIXEL
+			* [ ] Argb32
+			* [ ] Rgb24
+			* [ ] A8
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] A1
+				+ [ ] YA 8
+				+ [ ] RGBA 8
+			* [ ] Rgb16_565
+			* [ ] Rgb30

@@ -13,7 +13,7 @@ module Data.JuicyCairo (
 	-- ** JuicyPixels Image =\> Cairo Image
 	juicyToCairo,
 	juicyRGBA8ToCairoArgb32, juicyRGB8ToCairoRgb24,
-	juicyRGBA8ToCairoA8, juicyYA8ToCairoA8,
+	juicyYA8ToCairoA8, juicyRGBA8ToCairoA8,
 	juicyYA8ToCairoA1, juicyRGBA8ToCairoA1,
 	juicyRGB8ToCairoRgb16_565, juicyRGB16ToCairoRgb30,
 
