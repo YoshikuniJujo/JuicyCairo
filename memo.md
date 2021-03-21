@@ -22,18 +22,26 @@ enhancement
 	+ [ ] add A8 <=> YA8
 		- [x] `juicyYA8ToCairoA8`
 		- [x] `cairoA8ToJuicyYA8`
+		- [x] `juicyYA8ToCairoA8Mut`
+		- [ ] `cairoA8MutToJuicyYA8`
 		- [ ] others
 	+ [ ] add A8 <=> RGBA8
 		- [x] `juicyRGBA8ToCairoA8`
 		- [x] `cairoA8ToJuicyRGBA8`
+		- [ ] `juicyRGBA8ToCairoA8Mut`
+		- [ ] `cairoA8MutToJuicyRGBA8`
 		- [ ] others
 	+ [ ] add A1 <=> YA8
 		- [x] `juicyYA8ToCairoA1`
 		- [x] `cairoA1ToJuicyYA8`
+		- [ ] `juicyYA8ToCairoA1Mut`
+		- [ ] `cairoA1MutToJuicyYA8`
 		- [ ] others
 	+ [ ] add A1 <=> RGBA8
 		- [x] `juicyRGBA8ToCairoA1`
 		- [x] `cairoA1ToJuicyRGBA8`
+		- [ ] `juicyRGBA8ToCairoA1Mut`
+		- [ ] `cairoA1MutToJuicyRGBA8`
 		- [ ] others
 	+ [ ] remove A8 <=> Y8
 	+ [ ] remove A1 <=> Y8
