@@ -19,30 +19,26 @@ enhancement
 	+ [x] Rgb16\_565 <=> RGB8
 	+ [x] Rgb30 <=> RGB16
 * [ ] repair A8 and A1
-	+ [ ] add A8 <=> YA8
+	+ [x] add A8 <=> YA8
 		- [x] `juicyYA8ToCairoA8`
 		- [x] `cairoA8ToJuicyYA8`
 		- [x] `juicyYA8ToCairoA8Mut`
-		- [ ] `cairoA8MutToJuicyYA8`
-		- [ ] others
-	+ [ ] add A8 <=> RGBA8
+		- [x] `cairoA8MutToJuicyYA8`
+	+ [x] add A8 <=> RGBA8
 		- [x] `juicyRGBA8ToCairoA8`
 		- [x] `cairoA8ToJuicyRGBA8`
 		- [x] `juicyRGBA8ToCairoA8Mut`
-		- [ ] `cairoA8MutToJuicyRGBA8`
-		- [ ] others
-	+ [ ] add A1 <=> YA8
+		- [x] `cairoA8MutToJuicyRGBA8`
+	+ [x] add A1 <=> YA8
 		- [x] `juicyYA8ToCairoA1`
 		- [x] `cairoA1ToJuicyYA8`
 		- [x] `juicyYA8ToCairoA1Mut`
-		- [ ] `cairoA1MutToJuicyYA8`
-		- [ ] others
-	+ [ ] add A1 <=> RGBA8
+		- [x] `cairoA1MutToJuicyYA8`
+	+ [x] add A1 <=> RGBA8
 		- [x] `juicyRGBA8ToCairoA1`
 		- [x] `cairoA1ToJuicyRGBA8`
 		- [x] `juicyRGBA8ToCairoA1Mut`
-		- [ ] `cairoA1MutToJuicyRGBA8`
-		- [ ] others
+		- [x] `cairoA1MutToJuicyRGBA8`
 	+ [ ] remove A8 <=> Y8
 	+ [ ] remove A1 <=> Y8
 * [ ] refactoring

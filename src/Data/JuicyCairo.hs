@@ -21,7 +21,8 @@ module Data.JuicyCairo (
 	-- ** Cairo Mutable Image =\> JuicyPixels Image
 	cairoMutToJuicy,
 	cairoArgb32MutToJuicyRGBA8, cairoRgb24MutToJuicyRGB8,
-	cairoA8MutToJuicyY8, cairoA1MutToJuicyY8,
+	cairoA8MutToJuicyY8, cairoA8MutToJuicyYA8, cairoA8MutToJuicyRGBA8,
+	cairoA1MutToJuicyY8, cairoA1MutToJuicyYA8, cairoA1MutToJuicyRGBA8,
 	cairoRgb16_565MutToJuicyRGB8, cairoRgb30MutToJuicyRGB16,
 	-- ** JuicyPixels Image =\> Cairo Mutable Image
 	juicyToCairoMut,
@@ -150,9 +151,25 @@ cairoA8MutToJuicyY8 :: PrimMonad m =>
 	C.A8Mut (PrimState m) -> m (J.Image J.Pixel8)
 cairoA8MutToJuicyY8 = cairoMutToJuicy pixelA8ToPixel8
 
+cairoA8MutToJuicyYA8 :: PrimMonad m =>
+	Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelYA8)
+cairoA8MutToJuicyYA8 = cairoMutToJuicy . pixelA8ToPixelYA8
+
+cairoA8MutToJuicyRGBA8 :: PrimMonad m =>
+	Word8 -> Word8 -> Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
+cairoA8MutToJuicyRGBA8 r g b = cairoMutToJuicy $ pixelA8ToPixelRGBA8 r g b
+
 cairoA1MutToJuicyY8 :: PrimMonad m =>
 	C.A1Mut (PrimState m) -> m (J.Image J.Pixel8)
 cairoA1MutToJuicyY8 = cairoMutToJuicy pixelA1ToPixel8
+
+cairoA1MutToJuicyYA8 :: PrimMonad m =>
+	Word8 -> C.A1Mut (PrimState m) -> m (J.Image J.PixelYA8)
+cairoA1MutToJuicyYA8 = cairoMutToJuicy . pixelA1ToPixelYA8
+
+cairoA1MutToJuicyRGBA8 :: PrimMonad m =>
+	Word8 -> Word8 -> Word8 -> C.A1Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
+cairoA1MutToJuicyRGBA8 r g b = cairoMutToJuicy $ pixelA1ToPixelRGBA8 r g b
 
 cairoRgb16_565MutToJuicyRGB8 :: PrimMonad m =>
 	C.Rgb16_565Mut (PrimState m) -> m (J.Image J.PixelRGB8)
