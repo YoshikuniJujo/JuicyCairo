@@ -64,8 +64,8 @@ refactoring
 			* [x] Cairo Mutable Image => JuicyPixels Image
 			* [x] JuicyPixels Image => Cairo Mutable Image
 * [ ] refactor Data.JuicyCairo
-	+ [ ] export list
-	+ [ ] import list
+	+ [x] export list
+	+ [x] import list
 	+ [ ] structure
 	+ [ ] body
 		- [ ] CAIRO IMAGE => JUICY IMAGE

@@ -1,4 +1,4 @@
-{-# LANGUAGE BlockArguments, LambdaCase #-}
+{-# LANGUAGE BlockArguments #-}
 {-# LANGUAGE ViewPatterns #-}
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
@@ -38,7 +38,7 @@ import Data.Bool (bool)
 import Data.Maybe (fromJust)
 import Data.Word (Word8)
 
-import qualified Data.CairoImage.Internal as C
+import qualified Data.CairoImage as C
 import qualified Codec.Picture as J
 
 ---------------------------------------------------------------------------
