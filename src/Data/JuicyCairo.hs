@@ -226,7 +226,7 @@ pixelA1ToPixelRGBA8 :: Word8 -> Word8 -> Word8 -> C.PixelA1 -> J.PixelRGBA8
 pixelA1ToPixelRGBA8 r g b (C.PixelA1 a) = J.PixelRGBA8 r g b $ C.bit 0x00 0xff a
 
 pixelA1ToPixelYA8 :: Word8 -> C.PixelA1 -> J.PixelYA8
-pixelA1ToPixelYA8 y (C.PixelA1 a) = J.PixelYA8 y case a of C.O -> 0x00; C.I -> 0xff
+pixelA1ToPixelYA8 y (C.PixelA1 a) = J.PixelYA8 y $ C.bit 0x00 0xff a
 
 pixelRgb16_565ToPixelRGB8 :: C.PixelRgb16_565 -> J.PixelRGB8
 pixelRgb16_565ToPixelRGB8 (C.PixelRgb16_565 r g b) = J.PixelRGB8 r g b
