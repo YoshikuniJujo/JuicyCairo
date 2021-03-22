@@ -56,7 +56,8 @@ import qualified Codec.Picture as J
 
 cairoToJuicy :: (C.Image i, J.Pixel p) => (C.Pixel i -> p) -> i -> J.Image p
 cairoToJuicy c i = (uncurry . J.generateImage)
-	(\x y -> c . fromJust $ C.pixelAt i (fromIntegral x) (fromIntegral y))
+	(\(fromIntegral -> x) (fromIntegral -> y) ->
+		c . fromJust $ C.pixelAt i x y)
 	(fromIntegral *** fromIntegral $ C.imageSize i)
 
 cairoArgb32ToJuicyRGBA8 :: C.Argb32 -> J.Image J.PixelRGBA8
