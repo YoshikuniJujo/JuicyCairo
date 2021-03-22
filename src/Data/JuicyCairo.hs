@@ -136,16 +136,16 @@ cairoRgb24MutToJuicyRGB8 :: PrimMonad m =>
 	C.Rgb24Mut (PrimState m) -> m (J.Image J.PixelRGB8)
 cairoRgb24MutToJuicyRGB8 = cairoMutToJuicy pixelRgb24ToPixelRGB8
 
-cairoA8MutToJuicyRGBA8 :: PrimMonad m =>
-	Word8 -> Word8 -> Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
+cairoA8MutToJuicyRGBA8 :: PrimMonad m => Word8 -> Word8 -> Word8 ->
+	C.A8Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
 cairoA8MutToJuicyRGBA8 r g b = cairoMutToJuicy $ pixelA8ToPixelRGBA8 r g b
 
 cairoA8MutToJuicyYA8 :: PrimMonad m =>
 	Word8 -> C.A8Mut (PrimState m) -> m (J.Image J.PixelYA8)
 cairoA8MutToJuicyYA8 = cairoMutToJuicy . pixelA8ToPixelYA8
 
-cairoA1MutToJuicyRGBA8 :: PrimMonad m =>
-	Word8 -> Word8 -> Word8 -> C.A1Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
+cairoA1MutToJuicyRGBA8 :: PrimMonad m => Word8 -> Word8 -> Word8 ->
+	C.A1Mut (PrimState m) -> m (J.Image J.PixelRGBA8)
 cairoA1MutToJuicyRGBA8 r g b = cairoMutToJuicy $ pixelA1ToPixelRGBA8 r g b
 
 cairoA1MutToJuicyYA8 :: PrimMonad m =>
@@ -166,10 +166,13 @@ cairoRgb30MutToJuicyRGB16 = cairoMutToJuicy pixelRgb30ToPixelRGB16
 
 juicyToCairoMut :: (PrimMonad m, J.Pixel p, C.ImageMut im) =>
 	(p -> C.PixelMut im) -> J.Image p -> m (im (PrimState m))
-juicyToCairoMut c i = C.newImageMut (fromIntegral w) (fromIntegral h) >>= \im ->
-	im <$ for_ [0 .. h] \y -> for_ [0 .. w] \x -> let p = J.pixelAt i x y in
-		C.putPixel im (fromIntegral x) (fromIntegral y) $ c p
-	where w = J.imageWidth i; h = J.imageHeight i
+juicyToCairoMut c i = C.newImageMut w' h' >>= \im ->
+	im <$ for_ ys \(y, y') -> for_ xs \(x, x') ->
+		C.putPixel im x' y' $ c (J.pixelAt i x y)
+	where
+	w = J.imageWidth i; h = J.imageHeight i
+	w' = fromIntegral w; h' = fromIntegral h'
+	xs = zip [0 .. w] [0 .. w']; ys = zip [0 .. h] [0 .. h']
 
 juicyRGBA8ToCairoArgb32Mut :: PrimMonad m =>
 	J.Image J.PixelRGBA8 -> m (C.Argb32Mut (PrimState m))
