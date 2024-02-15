@@ -1,19 +1,21 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.36.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f4e89b936f35ffb0ed187f0e6ef006b2372aa0eaf0560045d10f7a119e8e6ae1
+-- hash: fdf814924b10146aaccdb6e7704fef8c2898705b9c40d7feefdf670bb5da0367
 
 name:           JuicyCairo
 version:        0.1.0.0
+synopsis:       To use images of JuicyPixels from Cairo
 description:    Please see the README on GitHub at <https://github.com/githubuser/JuicyCairo#readme>
+category:       Graphics
 homepage:       https://github.com/githubuser/JuicyCairo#readme
 bug-reports:    https://github.com/githubuser/JuicyCairo/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+author:         YoshikuniJujo
+maintainer:     yoshikuni.jujo@gmail.com
+copyright:      2021 Yoshikuni Jujo
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple

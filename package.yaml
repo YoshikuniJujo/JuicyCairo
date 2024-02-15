@@ -2,17 +2,17 @@ name:                JuicyCairo
 version:             0.1.0.0
 github:              "githubuser/JuicyCairo"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2021 Author name here"
+author:              "YoshikuniJujo"
+maintainer:          "yoshikuni.jujo@gmail.com"
+copyright:           "2021 Yoshikuni Jujo"
 
 extra-source-files:
 - README.md
 - ChangeLog.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
+synopsis:            To use images of JuicyPixels from Cairo
+category:            Graphics
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
