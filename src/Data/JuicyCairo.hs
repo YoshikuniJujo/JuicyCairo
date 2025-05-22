@@ -171,7 +171,7 @@ juicyToCairoMut c i = C.newImageMut w' h' >>= \im ->
 		C.putPixel im x' y' $ c (J.pixelAt i x y)
 	where
 	w = J.imageWidth i; h = J.imageHeight i
-	w' = fromIntegral w; h' = fromIntegral h'
+	w' = fromIntegral w; h' = fromIntegral h
 	xs = zip [0 .. w] [0 .. w']; ys = zip [0 .. h] [0 .. h']
 
 juicyRGBA8ToCairoArgb32Mut :: PrimMonad m =>
